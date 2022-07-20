@@ -5,13 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.openwebinars.rest.dto.CreateProductoDTO;
@@ -38,6 +32,7 @@ public class ProductoController {
 	 * 
 	 * @return 404 si no hay productos, 200 y lista de productos si hay uno o más
 	 */
+	@CrossOrigin(origins = "http://localhost:9001")
 	@GetMapping("/producto")
 	public ResponseEntity<?> obtenerTodos() {
 		List<Producto> result = productoRepositorio.findAll();
