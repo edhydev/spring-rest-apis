@@ -16,6 +16,12 @@ public class GlobalControllerAdvice {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
   }
 
+  @ExceptionHandler(CategoriaNotFoundException.class)
+  public ResponseEntity<ApiError> handleCategoriaNoEncontrado(CategoriaNotFoundException ex) {
+    ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
+  }
+
   @ExceptionHandler(JsonMappingException.class)
   public ResponseEntity<ApiError> handleJsonMappingException(JsonMappingException ex) {
     ApiError apiError = new ApiError();
